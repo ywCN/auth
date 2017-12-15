@@ -44,7 +44,7 @@ class App extends Component {
         return (
             <View>
                 <Header headerText='Auth' />
-                <LoginForm />
+                {this.renderContent()}
             </View>
         );
     }
