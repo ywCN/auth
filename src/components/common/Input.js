@@ -1,11 +1,10 @@
 import React from 'react';
-import { TextInput, View, Text} from 'react-native';
+import { TextInput, View, Text } from 'react-native';
 
 // warp a TextInput and make it looks nice
 
-const Input = ({ label, value, onChangeText }) => {
-
-    const { inputStyle, labelStyle, containerStyle, placeholder } = styles;
+const Input = ({ label, value, onChangeText, placeholder }) => {
+    const { inputStyle, labelStyle, containerStyle } = styles;
 
     return (
         <View style={containerStyle}>
