@@ -32,32 +32,24 @@ class App extends Component {
 
     // helper for showing content for different states
     renderContent() {
-        if (this.state.loggedIn) {
-            return (
-                <Button>
+        switch (this.state.loggedIn) {
+            case true: 
+                return (
+                <Button onPress={() => firebase.auth().signOut()}>
                     Log Out
                 </Button>
-            );
+                );
+            case false:
+                return <LoginForm />;
+            default:
+                return <Spinner size='large' />;
         }
-        return <LoginForm />;
-        // switch (this.state.loggedIn) {
-        //     case true: 
-        //         return (
-        //         <Button onPress={() => firebase.auth().signOut()}>
-        //             Log Out
-        //         </Button>
-        //         );
-        //     case false:
-        //         return <LoginForm />;
-        //     default:
-        //         return <Spinner size='large' />;
-        // }
     }
 
     render() {
         return (
             <View>
-                {/* <Header headerText='Auth' /> */}
+                <Header headerText='Auth' />
                 {this.renderContent()}
             </View>
         );
