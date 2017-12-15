@@ -14,6 +14,6 @@ const Input = ({ label, value, onChangeText }) => {
             />
         </View>
     );
-};
+}; 
 
 export { Input };
