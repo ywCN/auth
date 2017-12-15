@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import firebase from 'firebase';
-import { Header } from './components/common'; // should import our own stuffs at bottom
+import { Header, Button } from './components/common'; // should import our own stuffs at bottom
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
@@ -25,6 +25,19 @@ class App extends Component {
                 this.setState({ loggedIn: false });
             }
         });
+    }
+
+    // helper for showing content
+    renderContent() {
+        if (this.state.loggedIn) {
+            return (
+                <Button>
+                    Log Out
+                </Button>
+            );
+        }
+        
+        return <LoginForm />;
     }
 
     render() {
