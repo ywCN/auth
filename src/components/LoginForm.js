@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Card, CardSection, Button, Input } from './common';
 
 class LoginForm extends Component {
-    state = { email: '', password: '' };
+    state = { email: '', password: '', error: '' };
 
     onButtonPress() {
         const { email, password } = this.state;
-        firebase.auth().signInWithEmailAndPassword(email, password);
+        // this is an async operation which returns a Promise
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(() => {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .catch(() => {
+                        this.setState({ error: 'Authentication Failed.' });
+                    });
+            });
     }
 
     render() {
@@ -33,6 +41,10 @@ class LoginForm extends Component {
                         secureTextEntry // just listing this means true
                     />
                 </CardSection>
+
+                <Text>
+                    {this.state.error}
+                </Text>
 
                 <CardSection>
                     <Button onPress={this.onButtonPress.bind(this)}>
