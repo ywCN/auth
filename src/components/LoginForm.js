@@ -8,6 +8,9 @@ class LoginForm extends Component {
 
     onButtonPress() {
         const { email, password } = this.state;
+
+        this.setState({ error: '' });
+
         // this is an async operation which returns a Promise
         firebase.auth().signInWithEmailAndPassword(email, password)
             .catch(() => {
