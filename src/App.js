@@ -42,7 +42,7 @@ class App extends Component {
             case false:
                 return <LoginForm />;
             default:
-                return <Spinner sizde='large' />;
+                return <Spinner size='large' />;
         }
     }
 
