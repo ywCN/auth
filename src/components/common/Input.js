@@ -3,7 +3,7 @@ import { TextInput, View, Text } from 'react-native';
 
 // warp a TextInput and make it looks nice
 
-const Input = ({ label, value, onChangeText, placeholder }) => {
+const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
     const { inputStyle, labelStyle, containerStyle } = styles;
 
     return (
@@ -15,6 +15,7 @@ const Input = ({ label, value, onChangeText, placeholder }) => {
                 style={inputStyle}
                 value={value}
                 onChangeText={onChangeText}
+                secureTextEntry={secureTextEntry}
             />
         </View>
     );

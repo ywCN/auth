@@ -24,6 +24,7 @@ class LoginForm extends Component {
                         label='Password'
                         value={this.state.password}
                         onChangeText={password => this.setState({ password })}
+                        secureTextEntry // just listing this means true
                     />
                 </CardSection>
 
